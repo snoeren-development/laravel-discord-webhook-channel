@@ -1,0 +1,52 @@
+{
+    "name": "snoeren-development/laravel-discord-webhook-channel",
+    "description": "Send notifications to a Discord webhook.",
+    "keywords": [
+        "laravel",
+        "notification",
+        "driver",
+        "discord",
+        "webhook",
+        "snoeren"
+    ],
+    "homepage": "https://github.com/snoeren-development/laravel-discord-webhook-channel",
+    "license": "GNU/GPLv3",
+    "authors": [
+        {
+            "name": "Snoeren Development",
+            "email": "info@snoerendevelopment.nl"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "guzzlehttp/guzzle": "^6.5",
+        "illuminate/support": "^6.10"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.5",
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "SnoerenDevelopment\\DiscordWebhook\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SnoerenDevelopment\\DiscordWebhook\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit ./tests"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SnoerenDevelopment\\DiscordWebhook\\DiscordServiceProvider"
+            ]
+        }
+    }
+}
