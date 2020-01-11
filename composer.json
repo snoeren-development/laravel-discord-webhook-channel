@@ -20,7 +20,7 @@
     "require": {
         "php": "^7.2",
         "guzzlehttp/guzzle": "^6.5",
-        "illuminate/support": "^6.10"
+        "illuminate/support": "^6"
     },
     "require-dev": {
         "orchestra/testbench": "^4.5",
@@ -41,12 +41,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "SnoerenDevelopment\\DiscordWebhook\\DiscordServiceProvider"
-            ]
-        }
     }
 }
