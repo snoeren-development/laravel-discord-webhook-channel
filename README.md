@@ -3,6 +3,7 @@
 [![Software License](https://img.shields.io/github/license/snoeren-development/laravel-discord-webhook-channel?style=flat-square)](LICENSE.md)
 [![Build status](https://img.shields.io/github/workflow/status/snoeren-development/laravel-discord-webhook-channel/PHP%20Tests?style=flat-square)](https://github.com/snoeren-development/laravel-discord-webhook-channel/actions)
 [![Downloads](https://img.shields.io/packagist/dt/snoeren-development/laravel-discord-webhook-channel?style=flat-square)](https://packagist.org/packages/snoeren-development/laravel-discord-webhook-channel)
+[![Donate](https://img.shields.io/beerpay/snoeren-development/laravel-discord-webhook-channel?style=flat-square)](https://beerpay.io/snoeren-development/laravel-discord-webhook-channel)
 
 ## Installation
 You can install the package using Composer:
