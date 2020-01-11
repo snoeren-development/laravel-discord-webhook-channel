@@ -10,7 +10,10 @@ You can install the package using Composer:
 composer require snoeren-development/laravel-discord-webhook-channel
 ```
 
-### Usage
+### Requirements
+This package requires PHP 7.2 or higher.
+
+## Usage
 In every notifiable model you wish to notify via Discord, you need to add the `routeNotificationForDiscord` method;
 ```php
 use Illuminate\Database\Eloquent\Model;
@@ -31,7 +34,10 @@ class User extends Model
     }
 }
 ```
-The webhook URL can be created and retrieved via the Discord channel server Webhooks settings. The notification needs the full URL which looks like `https://discordapp.com/api/webhooks/1234567890123456789/1Px6cK9-9346g0CbOYArYjr1jj6X9rvRcCpRi3s7HePN0POeCSvuF1Iagb-Wjiq78BnT`.
+The webhook URL can be created and retrieved via the Discord channel server Webhooks settings. The notification needs the full URL which looks like
+```
+https://discordapp.com/api/webhooks/1234567890123456789/1Px6cK9-9346g0CbOYArYjr1jj6X9rvRcCpRi3s7HePN0POeCSvuF1Iagb-Wjiq78BnT
+```
 
 You may now send notifications through Laravel to Discord webhooks using the `via` method.
 ```php
