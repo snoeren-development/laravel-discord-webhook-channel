@@ -26,7 +26,7 @@ class User extends Model
 
     /**
      * Route the notification for Discord.
-     * @access public
+     *
      * @return string
      */
     public function routeNotificationForDiscord(): string
@@ -48,8 +48,8 @@ class DiscordNotification extends Notification
 {
     /**
      * Get the notification's delivery channels.
+     *
      * @param  mixed $notifiable The notifiable model.
-     * @access public
      * @return array
      */
     public function via($notifiable)
@@ -59,8 +59,8 @@ class DiscordNotification extends Notification
 
     /**
      * Get the Discord representation of the notification.
+     *
      * @param  mixed $notifiable The notifiable model.
-     * @access public
      * @return array
      */
     public function toDiscord($notifiable): array

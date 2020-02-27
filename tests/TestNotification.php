@@ -9,8 +9,8 @@ class TestNotification extends Notification
 {
     /**
      * Create the Discord notification.
+     *
      * @param  mixed $notifiable The notifiable object.
-     * @access public
      * @return array
      */
     public function toDiscord($notifiable)

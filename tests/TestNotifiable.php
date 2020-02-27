@@ -11,7 +11,7 @@ class TestNotifiable
 
     /**
      * Route the Discord notification.
-     * @access public
+     *
      * @return string
      */
     public function routeNotificationForDiscord()

@@ -9,7 +9,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
      * Called after each test.
-     * @access protected
+     *
      * @return void
      */
     protected function tearDown(): void

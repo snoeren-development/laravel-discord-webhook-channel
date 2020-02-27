@@ -12,7 +12,7 @@ class DiscordChannelTest extends TestCase
 {
     /**
      * Test if the channel can send a notification.
-     * @access public
+     *
      * @return void
      * @test
      */
@@ -43,7 +43,7 @@ class DiscordChannelTest extends TestCase
 
     /**
      * Test if the channel does not send anything if the notifiable does not have a route.
-     * @access public
+     *
      * @return void
      * @test
      */
