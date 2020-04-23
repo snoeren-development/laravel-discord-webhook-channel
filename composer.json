@@ -10,7 +10,7 @@
         "snoeren"
     ],
     "homepage": "https://github.com/snoeren-development/laravel-discord-webhook-channel",
-    "license": "GPL-3.0-or-later",
+    "license": "MIT",
     "authors": [
         {
             "name": "Snoeren Development",
