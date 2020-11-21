@@ -48,4 +48,24 @@ class DiscordMessageTest extends TestCase
         $this->assertArrayNotHasKey('avatar_url', $result);
         $this->assertArrayNotHasKey('tts', $result);
     }
+
+    /**
+     * Test that the toArray method returns all variables when filled.
+     *
+     * @return void
+     */
+    public function testToArrayReturnsAllValuesWhenFilled()
+    {
+        $result = DiscordMessage::create()
+            ->content('Content')
+            ->username('UnitTest')
+            ->avatar('https://domain.com/some-avatar.jpg')
+            ->tts(false)
+            ->toArray();
+
+        $this->assertArrayHasKey('content', $result);
+        $this->assertArrayHasKey('username', $result);
+        $this->assertArrayHasKey('avatar_url', $result);
+        $this->assertArrayHasKey('tts', $result);
+    }
 }

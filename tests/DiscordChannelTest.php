@@ -11,7 +11,7 @@ use SnoerenDevelopment\DiscordWebhook\DiscordWebhookChannel;
 class DiscordChannelTest extends TestCase
 {
     /**
-     * Test if the channel can send a notification.
+     * Test that the channel can send a notification with array payload.
      *
      * @return void
      */
@@ -38,6 +38,36 @@ class DiscordChannelTest extends TestCase
 
         $channel = new DiscordWebhookChannel($http);
         $this->assertTrue($channel->send(new TestNotifiable, new TestNotification));
+    }
+
+    /**
+     * Test that the channel can send a notification with DiscordMessage object payload.
+     *
+     * @return void
+     */
+    public function testChannelCanSendNotificationAsObject(): void
+    {
+        /** @var \Mockery\MockInterface|\Mockery\LegacyMockInterface $http */
+        $http = Mockery::mock(HttpClient::class);
+        $http
+            ->shouldReceive('post')
+            ->once()
+            ->with(
+                'https://discordapp.com/api/webhooks/12345/super-secret',
+                [
+                    'json' => [
+                        'username' => 'Unit Test',
+                        'content' => 'This is the message.',
+                    ],
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                    ],
+                ]
+            )
+            ->andReturn(new Response(204));
+
+        $channel = new DiscordWebhookChannel($http);
+        $this->assertTrue($channel->send(new TestNotifiable, new TestNotificationWithMessage));
     }
 
     /**
