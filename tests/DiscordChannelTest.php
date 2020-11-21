@@ -14,9 +14,8 @@ class DiscordChannelTest extends TestCase
      * Test if the channel can send a notification.
      *
      * @return void
-     * @test
      */
-    public function channelCanSendNotification(): void
+    public function testChannelCanSendNotification(): void
     {
         /** @var \Mockery\MockInterface|\Mockery\LegacyMockInterface $http */
         $http = Mockery::mock(HttpClient::class);
@@ -45,9 +44,8 @@ class DiscordChannelTest extends TestCase
      * Test if the channel does not send anything if the notifiable does not have a route.
      *
      * @return void
-     * @test
      */
-    public function channelDoesNotSendWhenNotifiableDoesntHaveRoute(): void
+    public function testChannelDoesNotSendWhenNotifiableDoesntHaveRoute(): void
     {
         /** @var \Mockery\MockInterface|\Mockery\LegacyMockInterface $http */
         $http = Mockery::spy(new HttpClient());

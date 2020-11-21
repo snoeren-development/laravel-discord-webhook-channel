@@ -11,6 +11,7 @@ class DiscordWebhookChannel
 {
     /**
      * The HTTP client.
+     *
      * @var \GuzzleHttp\Client
      */
     protected $http;
@@ -41,6 +42,11 @@ class DiscordWebhookChannel
 
         // Get the payload of the notification.
         $payload = $notification->toDiscord($notifiable);
+
+        // Retrieve the message as array if a DiscordMessage has been returned.
+        if ($payload instanceof DiscordMessage) {
+            $payload = $payload->toArray();
+        }
 
         // Send the request.
         $response = $this->http->post(
