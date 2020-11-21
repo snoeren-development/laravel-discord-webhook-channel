@@ -111,6 +111,8 @@ class DiscordMessage implements Arrayable
             'username' => $this->username,
             'avatar_url' => $this->avatarUrl,
             'tts' => $this->tts,
-        ]);
+        ], function ($value) {
+            return !is_null($value);
+        });
     }
 }
