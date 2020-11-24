@@ -41,6 +41,7 @@ https://discordapp.com/api/webhooks/1234567890123456789/1Px6cK9-9346g0CbOYArYjr1
 
 You may now send notifications through Laravel to Discord webhooks using the `via` method.
 ```php
+use SnoerenDevelopment\DiscordWebhook\DiscordMessage;
 use SnoerenDevelopment\DiscordWebhook\DiscordWebhookChannel;
 
 class DiscordNotification extends Notification
@@ -60,16 +61,15 @@ class DiscordNotification extends Notification
      * Get the Discord representation of the notification.
      *
      * @param  mixed $notifiable The notifiable model.
-     * @return array
+     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
      */
-    public function toDiscord($notifiable): array
+    public function toDiscord($notifiable): DiscordMessage
     {
-        // The Discord webhook payload in array form.
-        // See https://discordapp.com/developers/docs/resources/webhook#execute-webhook for all options.
-        return [
-            'username' => 'My Laravel App',
-            'content' => 'The message body.',
-        ];
+        return DiscordMessage::create()
+            ->username('My Laravel App')
+            ->content('The message body.')
+            ->avatar('https://domain.com/avatar.jpg')
+            ->tts(false);
     }
 }
 ```
