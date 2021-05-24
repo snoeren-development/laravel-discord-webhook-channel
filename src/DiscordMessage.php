@@ -55,7 +55,7 @@ class DiscordMessage implements Arrayable
      */
     public function content(string $content): self
     {
-        if (empty($content)) {
+        if (!strlen($content)) {
             throw new \InvalidArgumentException('Content must not be empty.');
         }
 
