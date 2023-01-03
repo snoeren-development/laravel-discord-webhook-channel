@@ -1,7 +1,7 @@
 # Laravel Discord Webhook Channel
 [![Latest version on Packagist](https://img.shields.io/packagist/v/snoeren-development/laravel-discord-webhook-channel.svg?style=flat-square)](https://packagist.org/packages/snoeren-development/laravel-discord-webhook-channel)
 [![Software License](https://img.shields.io/github/license/snoeren-development/laravel-discord-webhook-channel?style=flat-square)](LICENSE)
-[![Build status](https://img.shields.io/github/workflow/status/snoeren-development/laravel-discord-webhook-channel/PHP%20Tests?style=flat-square)](https://github.com/snoeren-development/laravel-discord-webhook-channel/actions)
+[![Build status](https://img.shields.io/github/actions/workflow/status/snoeren-development/laravel-discord-webhook-channel/php.yml?branch=main&style=flat-square)](https://github.com/snoeren-development/laravel-discord-webhook-channel/actions)
 [![Downloads](https://img.shields.io/packagist/dt/snoeren-development/laravel-discord-webhook-channel?style=flat-square)](https://packagist.org/packages/snoeren-development/laravel-discord-webhook-channel)
 
 ## Installation
