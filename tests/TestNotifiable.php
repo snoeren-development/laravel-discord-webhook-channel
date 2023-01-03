@@ -14,7 +14,7 @@ class TestNotifiable
      *
      * @return string
      */
-    public function routeNotificationForDiscord()
+    public function routeNotificationForDiscord(): string
     {
         return 'https://discordapp.com/api/webhooks/12345/super-secret';
     }

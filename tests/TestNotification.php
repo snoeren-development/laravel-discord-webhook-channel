@@ -11,9 +11,9 @@ class TestNotification extends Notification
      * Create the Discord notification.
      *
      * @param  mixed $notifiable The notifiable object.
-     * @return array
+     * @return array<string, string>
      */
-    public function toDiscord($notifiable)
+    public function toDiscord($notifiable): array
     {
         return [
             'username' => 'Unit Test',

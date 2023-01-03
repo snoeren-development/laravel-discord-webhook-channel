@@ -34,7 +34,7 @@ class DiscordWebhookChannel
      * @param  \Illuminate\Notifications\Notification $notification The notification object.
      * @return boolean
      */
-    public function send($notifiable, Notification $notification)
+    public function send($notifiable, Notification $notification): bool
     {
         if (!$webhookUrl = $notifiable->routeNotificationFor('discord')) {
             return false;

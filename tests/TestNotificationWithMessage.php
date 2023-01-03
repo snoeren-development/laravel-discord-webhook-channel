@@ -14,7 +14,7 @@ class TestNotificationWithMessage extends Notification
      * @param  mixed $notifiable The notifiable object.
      * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
      */
-    public function toDiscord($notifiable)
+    public function toDiscord($notifiable): DiscordMessage
     {
         return DiscordMessage::create()
             ->username('Unit Test')

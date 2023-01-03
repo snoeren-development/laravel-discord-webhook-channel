@@ -102,9 +102,9 @@ class DiscordMessage implements Arrayable
     /**
      * Get the instance as an array.
      *
-     * @return array
+     * @return mixed[]
      */
-    public function toArray()
+    public function toArray(): array
     {
         return array_filter([
             'content' => $this->content,

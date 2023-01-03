@@ -54,7 +54,7 @@ class DiscordMessageTest extends TestCase
      *
      * @return void
      */
-    public function testToArrayReturnsAllValuesWhenFilled()
+    public function testToArrayReturnsAllValuesWhenFilled(): void
     {
         $result = DiscordMessage::create()
             ->content('Content')
