@@ -11,7 +11,7 @@ composer require snoeren-development/laravel-discord-webhook-channel
 ```
 
 ### Requirements
-This package requires at least PHP 7.4 and Laravel 6.
+This package requires at least PHP 8.0 and Laravel 8.
 
 ## Usage
 In every notifiable model you wish to notify via Discord, you need to add the `routeNotificationForDiscord` method;
