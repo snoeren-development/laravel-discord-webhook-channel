@@ -20,7 +20,7 @@
     "require": {
         "php": "^8.0",
         "guzzlehttp/guzzle": "^7.4.4|^6.5",
-        "illuminate/support": "^8.0|^9.0"
+        "illuminate/support": "^8.0|^9.0|^10.0"
     },
     "require-dev": {
         "orchestra/testbench": "^v7.9.0",
