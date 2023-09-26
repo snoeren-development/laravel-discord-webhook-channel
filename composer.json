@@ -23,8 +23,8 @@
         "illuminate/support": "^8.0|^9.0|^10.0"
     },
     "require-dev": {
-        "orchestra/testbench": "v8.5.5",
-        "phpunit/phpunit": "^10.2.0",
+        "orchestra/testbench": "v8.12.1",
+        "phpunit/phpunit": "^10.3.5",
         "spatie/macroable": "^2.0.0"
     },
     "autoload": {
