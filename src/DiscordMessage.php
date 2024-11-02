@@ -12,28 +12,28 @@ class DiscordMessage implements Arrayable
      *
      * @var string
      */
-    protected $content;
+    protected string|null $content = null;
 
     /**
      * The username.
      *
      * @var string
      */
-    protected $username;
+    protected string|null $username = null;
 
     /**
      * The avatar URL.
      *
      * @var string
      */
-    protected $avatarUrl;
+    protected string|null $avatarUrl = null;
 
     /**
      * Indicates that this is a Text-to-speech message.
      *
      * @var boolean
      */
-    protected $tts;
+    protected bool|null $tts = null;
 
     /**
      * Create a new Discord message instance.

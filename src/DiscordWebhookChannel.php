@@ -14,7 +14,7 @@ class DiscordWebhookChannel
      *
      * @var \GuzzleHttp\Client
      */
-    protected $http;
+    protected Client $http;
 
     /**
      * Constructor
