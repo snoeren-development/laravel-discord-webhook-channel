@@ -114,6 +114,12 @@ class DiscordMessage implements Arrayable
             'tts' => $this->tts,
             'allowed_mentions' => $this->allowedMentions,
             'flags' => $this->flags,
-        ], fn ($value) => !is_null($value));
+        ], function ($value) {
+            if (is_array($value) && count($value) === 0) {
+                return false;
+            }
+
+            return !is_null($value);
+        });
     }
 }
