@@ -20,6 +20,13 @@ class DiscordMessage implements Arrayable
     /** Indicates that this is a Text-to-speech message. */
     protected ?bool $tts = null;
 
+    /**
+     * Controls what mentions are allowed in the message.
+     * 
+     * Allowed values: "everyone", "roles", "users"
+     */
+    protected array $allowedMentions = [];
+
     /** Create a new Discord message instance. */
     public static function create(): self
     {
@@ -63,6 +70,17 @@ class DiscordMessage implements Arrayable
     }
 
     /**
+     * Set the allowed mentions.
+     *
+     * @param  array<string> $allowedMentions The allowed mentions. Allowed values: "everyone", "roles", "users"
+     */
+    public function allowedMentions(array $allowedMentions): self
+    {
+        $this->allowedMentions = $allowedMentions;
+        return $this;
+    }
+
+    /**
      * Get the instance as an array.
      *
      * @return array<string, mixed>
@@ -74,6 +92,7 @@ class DiscordMessage implements Arrayable
             'username' => $this->username,
             'avatar_url' => $this->avatarUrl,
             'tts' => $this->tts,
+            'allowed_mentions' => $this->allowedMentions,
         ], fn ($value) => !is_null($value));
     }
 }
