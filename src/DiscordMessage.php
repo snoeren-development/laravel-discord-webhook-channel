@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace SnoerenDevelopment\DiscordWebhook;
 
@@ -10,30 +10,30 @@ class DiscordMessage implements Arrayable
     /**
      * The message content.
      *
-     * @var string
+     * @var string|null
      */
-    protected $content;
+    protected string|null $content = null;
 
     /**
      * The username.
      *
-     * @var string
+     * @var string|null
      */
-    protected $username;
+    protected string|null $username = null;
 
     /**
      * The avatar URL.
      *
-     * @var string
+     * @var string|null
      */
-    protected $avatarUrl;
+    protected string|null $avatarUrl = null;
 
     /**
      * Indicates that this is a Text-to-speech message.
      *
-     * @var boolean
+     * @var boolean|null
      */
-    protected $tts;
+    protected bool|null $tts = null;
 
     /**
      * Create a new Discord message instance.
