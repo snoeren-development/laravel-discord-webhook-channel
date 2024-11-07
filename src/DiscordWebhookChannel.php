@@ -9,38 +9,20 @@ use Illuminate\Notifications\Notification;
 
 class DiscordWebhookChannel
 {
-    /**
-     * The HTTP client.
-     *
-     * @var \GuzzleHttp\Client
-     */
-    protected Client $http;
-
-    /**
-     * Constructor
-     *
-     * @param  \GuzzleHttp\Client $http The HTTP client.
-     * @return void
-     */
-    public function __construct(Client $http)
+    public function __construct(protected Client $http)
     {
-        $this->http = $http;
+        //
     }
 
-    /**
-     * Send the notification.
-     *
-     * @param  mixed                                  $notifiable   The notifiable object.
-     * @param  \Illuminate\Notifications\Notification $notification The notification object.
-     * @return boolean
-     */
-    public function send($notifiable, Notification $notification): bool
+    public function send(mixed $notifiable, Notification $notification): bool
     {
+        // @phpstan-ignore-next-line
         if (!$webhookUrl = $notifiable->routeNotificationFor('discord')) {
             return false;
         }
 
         // Get the payload of the notification.
+        // @phpstan-ignore-next-line
         $payload = $notification->toDiscord($notifiable);
 
         // Retrieve the message as array if a DiscordMessage has been returned.

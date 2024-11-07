@@ -1,45 +1,26 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace SnoerenDevelopment\DiscordWebhook;
 
 use Illuminate\Contracts\Support\Arrayable;
 
+/** @implements Arrayable<string, mixed> */
 class DiscordMessage implements Arrayable
 {
-    /**
-     * The message content.
-     *
-     * @var string|null
-     */
-    protected string|null $content = null;
+    /** The message content. */
+    protected ?string $content = null;
 
-    /**
-     * The username.
-     *
-     * @var string|null
-     */
-    protected string|null $username = null;
+    /** The username. */
+    protected ?string $username = null;
 
-    /**
-     * The avatar URL.
-     *
-     * @var string|null
-     */
-    protected string|null $avatarUrl = null;
+    /** The avatar URL. */
+    protected ?string $avatarUrl = null;
 
-    /**
-     * Indicates that this is a Text-to-speech message.
-     *
-     * @var boolean|null
-     */
-    protected bool|null $tts = null;
+    /** Indicates that this is a Text-to-speech message. */
+    protected ?bool $tts = null;
 
-    /**
-     * Create a new Discord message instance.
-     *
-     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
-     */
+    /** Create a new Discord message instance. */
     public static function create(): self
     {
         return new self;
@@ -47,9 +28,6 @@ class DiscordMessage implements Arrayable
 
     /**
      * Set the content.
-     *
-     * @param  string $content The content.
-     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
      *
      * @throws \InvalidArgumentException Thrown on empty content.
      */
@@ -63,36 +41,21 @@ class DiscordMessage implements Arrayable
         return $this;
     }
 
-    /**
-     * Set the username.
-     *
-     * @param  string $username The username.
-     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
-     */
+    /** Set the username. */
     public function username(string $username): self
     {
         $this->username = $username;
         return $this;
     }
 
-    /**
-     * Set the avatar url.
-     *
-     * @param  string $url The avatar url.
-     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
-     */
+    /** Set the avatar url. */
     public function avatar(string $url): self
     {
         $this->avatarUrl = $url;
         return $this;
     }
 
-    /**
-     * Set the TTS flag.
-     *
-     * @param  boolean $tts The TTS flag.
-     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
-     */
+    /** Set the TTS flag. */
     public function tts(bool $tts): self
     {
         $this->tts = $tts;
@@ -102,7 +65,7 @@ class DiscordMessage implements Arrayable
     /**
      * Get the instance as an array.
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function toArray(): array
     {
@@ -111,8 +74,6 @@ class DiscordMessage implements Arrayable
             'username' => $this->username,
             'avatar_url' => $this->avatarUrl,
             'tts' => $this->tts,
-        ], function ($value) {
-            return !is_null($value);
-        });
+        ], fn ($value) => !is_null($value));
     }
 }

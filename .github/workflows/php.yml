@@ -30,3 +30,6 @@ jobs:
 
     - name: Run test suite
       run: vendor/bin/phpunit ./tests --coverage-text
+
+    - name: Run PHPStan
+      run: vendor/bin/phpstan
