@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace SnoerenDevelopment\DiscordWebhook;
 
@@ -20,12 +20,8 @@ class DiscordMessage implements Arrayable
     /** Indicates that this is a Text-to-speech message. */
     protected ?bool $tts = null;
 
-    /**
-     * Controls what mentions are allowed in the message.
-     * 
-     * Allowed values: "everyone", "roles", "users"
-     */
-    protected array $allowedMentions = [];
+    /** Controls what mentions are allowed in the message. */
+    protected DiscordMessageAllowedMentions|null $allowedMentions;
 
     /**
      * Message flags.
@@ -76,12 +72,8 @@ class DiscordMessage implements Arrayable
         return $this;
     }
 
-    /**
-     * Set the allowed mentions.
-     *
-     * @param  array<string> $allowedMentions The allowed mentions. Allowed values: "everyone", "roles", "users"
-     */
-    public function allowedMentions(array $allowedMentions): self
+    /** Set the allowed mentions. */
+    public function allowedMentions(DiscordMessageAllowedMentions $allowedMentions): self
     {
         $this->allowedMentions = $allowedMentions;
         return $this;
@@ -112,7 +104,7 @@ class DiscordMessage implements Arrayable
             'username' => $this->username,
             'avatar_url' => $this->avatarUrl,
             'tts' => $this->tts,
-            'allowed_mentions' => $this->allowedMentions,
+            'allowed_mentions' => $this->allowedMentions?->toArray(),
             'flags' => $this->flags,
         ], function ($value) {
             if (is_array($value) && count($value) === 0) {
