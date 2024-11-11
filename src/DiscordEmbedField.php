@@ -10,13 +10,13 @@ use Illuminate\Contracts\Support\Arrayable;
 class DiscordEmbedField implements Arrayable
 {
     /** The name of the embed field. */
-    protected string|null $name;
+    protected string|null $name = null;
 
     /** The value of the embed field. */
-    protected string|null $value;
+    protected string|null $value = null;
 
     /** Indicates whether the field should be displayed inline. */
-    protected bool|null $inline;
+    protected bool|null $inline = null;
 
     /** Create a new Discord embed field instance. */
     public static function create(): self

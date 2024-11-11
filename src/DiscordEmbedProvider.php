@@ -10,10 +10,10 @@ use Illuminate\Contracts\Support\Arrayable;
 class DiscordEmbedProvider implements Arrayable
 {
     /** The name of the embed provider. */
-    protected string|null $name;
+    protected string|null $name = null;
 
     /** The URL of the embed provider. */
-    protected string|null $url;
+    protected string|null $url = null;
 
     /** Create a new Discord embed provider instance. */
     public static function create(): self

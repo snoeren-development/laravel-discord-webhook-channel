@@ -10,16 +10,16 @@ use Illuminate\Contracts\Support\Arrayable;
 class DiscordEmbedAuthor implements Arrayable
 {
     /**  The name of the embed author. */
-    protected string|null $name;
+    protected string|null $name = null;
 
     /** The url of the embed author. */
-    protected string|null $url;
+    protected string|null $url = null;
 
     /** The icon URL of the embed author. */
-    protected string|null $iconUrl;
+    protected string|null $iconUrl = null;
 
     /** The proxy icon URL of the embed author. */
-    protected string|null $proxyIconUrl;
+    protected string|null $proxyIconUrl = null;
 
     /**  Create a new Discord embed author instance. */
     public static function create(): self
@@ -67,6 +67,6 @@ class DiscordEmbedAuthor implements Arrayable
             'url' => $this->url,
             'icon_url' => $this->iconUrl,
             'proxy_icon_url' => $this->proxyIconUrl,
-        ], fn ($value) => !is_null($value));
+        ], fn($value) => !is_null($value));
     }
 }

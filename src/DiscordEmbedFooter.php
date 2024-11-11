@@ -10,13 +10,13 @@ use Illuminate\Contracts\Support\Arrayable;
 class DiscordEmbedFooter implements Arrayable
 {
     /** The text of the embed footer. */
-    protected string|null $text;
+    protected string|null $text = null;
 
     /** The icon URL of the embed footer. */
-    protected string|null $iconUrl;
+    protected string|null $iconUrl = null;
 
     /** The proxy icon URL of the embed footer. */
-    protected string|null $proxyIconUrl;
+    protected string|null $proxyIconUrl = null;
 
     /** Create a new Discord embed footer instance. */
     public static function create(): self
