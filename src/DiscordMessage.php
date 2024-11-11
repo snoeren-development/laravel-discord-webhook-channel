@@ -25,7 +25,7 @@ class DiscordMessage implements Arrayable
      * 
      * @var \SnoerenDevelopment\DiscordWebhook\DiscordEmbed[]
      */
-    protected array $embeds;
+    protected array $embeds = [];
 
     /** Create a new Discord message instance. */
     public static function create(): self
