@@ -21,7 +21,7 @@ class DiscordMessage implements Arrayable
     protected ?bool $tts = null;
 
     /** Controls what mentions are allowed in the message. */
-    protected DiscordMessageAllowedMentions|null $allowedMentions;
+    protected DiscordMessageAllowedMentions|null $allowedMentions = null;
 
     /**
      * Message flags.
