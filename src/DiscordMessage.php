@@ -20,6 +20,13 @@ class DiscordMessage implements Arrayable
     /** Indicates that this is a Text-to-speech message. */
     protected ?bool $tts = null;
 
+    /**
+     * The embeds of the message.
+     * 
+     * @var \SnoerenDevelopment\DiscordWebhook\DiscordEmbed[]
+     */
+    protected array $embeds = [];
+
     /** Create a new Discord message instance. */
     public static function create(): self
     {
@@ -63,6 +70,28 @@ class DiscordMessage implements Arrayable
     }
 
     /**
+     * Add the message embeds.
+     *
+     * @param  \SnoerenDevelopment\DiscordWebhook\DiscordEmbed[] $embeds Embeds to add.
+     */
+    public function embeds(array $embeds): self
+    {
+        $this->embeds = [...$this->embeds, ...$embeds];
+        return $this;
+    }
+
+    /**
+     * Add the message embed.
+     *
+     * @param  \SnoerenDevelopment\DiscordWebhook\DiscordEmbed $embed The embed to add.
+     */
+    public function embed(DiscordEmbed $embed): self
+    {
+        $this->embeds = [...$this->embeds, $embed];
+        return $this;
+    }
+
+    /**
      * Get the instance as an array.
      *
      * @return array<string, mixed>
@@ -74,6 +103,16 @@ class DiscordMessage implements Arrayable
             'username' => $this->username,
             'avatar_url' => $this->avatarUrl,
             'tts' => $this->tts,
-        ], fn ($value) => !is_null($value));
+            'embeds' => array_map(
+                fn(DiscordEmbed $embed) => $embed->toArray(),
+                $this->embeds
+            ),
+        ], function ($value) {
+            if (is_array($value) && count($value) === 0) {
+                return false;
+            }
+
+            return !is_null($value);
+        });
     }
 }
