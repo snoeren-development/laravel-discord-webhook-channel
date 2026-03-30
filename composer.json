@@ -18,14 +18,14 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "guzzlehttp/guzzle": "^7.9.2",
         "illuminate/support": ">=10"
     },
     "require-dev": {
         "larastan/larastan": "^3",
         "orchestra/testbench": "^11",
-        "phpunit/phpunit": "^13",
+        "phpunit/phpunit": "^12",
         "spatie/macroable": "^2.0.0"
     },
     "autoload": {
