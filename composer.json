@@ -20,12 +20,12 @@
     "require": {
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.9.2",
-        "illuminate/support": "^10.0||^11.0||^12.0"
+        "illuminate/support": ">=10"
     },
     "require-dev": {
-        "larastan/larastan": "^2.9",
-        "orchestra/testbench": "v9.5.2",
-        "phpunit/phpunit": "^11.4.3",
+        "larastan/larastan": "^3",
+        "orchestra/testbench": "^11",
+        "phpunit/phpunit": "^13",
         "spatie/macroable": "^2.0.0"
     },
     "autoload": {
