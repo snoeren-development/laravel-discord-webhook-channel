@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace SnoerenDevelopment\DiscordWebhook;
 
@@ -9,20 +10,20 @@ use Illuminate\Contracts\Support\Arrayable;
 class DiscordMessage implements Arrayable
 {
     /** The message content. */
-    protected ?string $content = null;
+    protected string|null $content = null;
 
     /** The username. */
-    protected ?string $username = null;
+    protected string|null $username = null;
 
     /** The avatar URL. */
-    protected ?string $avatarUrl = null;
+    protected string|null $avatarUrl = null;
 
     /** Indicates that this is a Text-to-speech message. */
-    protected ?bool $tts = null;
+    protected bool|null $tts = null;
 
     /**
      * The embeds of the message.
-     * 
+     *
      * @var \SnoerenDevelopment\DiscordWebhook\DiscordEmbed[]
      */
     protected array $embeds = [];

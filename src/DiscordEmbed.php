@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SnoerenDevelopment\DiscordWebhook;
@@ -38,12 +39,12 @@ class DiscordEmbed implements Arrayable
     /** The provider of the embed. */
     protected DiscordEmbedProvider|null $provider = null;
 
-    /**  The author of the embed. */
+    /** The author of the embed. */
     protected DiscordEmbedAuthor|null $author = null;
 
     /**
      * The fields of the embed.
-     * 
+     *
      * @var \SnoerenDevelopment\DiscordWebhook\DiscordEmbedField[]
      */
     protected array $fields = [];
@@ -69,7 +70,6 @@ class DiscordEmbed implements Arrayable
     }
 
     /** Set the URL of the embed. */
-
     public function url(string $url): self
     {
         $this->url = $url;
@@ -77,9 +77,11 @@ class DiscordEmbed implements Arrayable
     }
 
     /** Set the ISO 8601 timestamp of the embed. */
-    public function timestamp(string $timestamp): self
+    public function timestamp(string|\DateTimeInterface $timestamp): self
     {
-        $this->timestamp = $timestamp;
+        $this->timestamp = $timestamp instanceof \DateTimeInterface
+            ? $timestamp->format(\DateTimeInterface::ATOM)
+            : $timestamp;
         return $this;
     }
 
@@ -143,7 +145,7 @@ class DiscordEmbed implements Arrayable
         return $this;
     }
 
-    /**  Add a field to the embed. */
+    /** Add a field to the embed. */
     public function field(DiscordEmbedField $field): self
     {
         $this->fields = [...$this->fields, $field];
@@ -153,7 +155,7 @@ class DiscordEmbed implements Arrayable
     /**
      * Get the instance as an array.
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function toArray(): array
     {

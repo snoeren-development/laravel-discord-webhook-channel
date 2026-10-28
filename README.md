@@ -15,7 +15,7 @@ composer require snoeren-development/laravel-discord-webhook-channel
 
 ### Requirements
 
-This package requires at least PHP 8.3 and Laravel 10.
+This package requires at least PHP 8.3 and Laravel 12.
 
 ## Usage
 
@@ -31,8 +31,6 @@ class User extends Model
 
     /**
      * Route the notification for Discord.
-     *
-     * @return string
      */
     public function routeNotificationForDiscord(): string
     {
@@ -44,8 +42,12 @@ class User extends Model
 The webhook URL can be created and retrieved via the Discord channel server Webhooks settings. The notification needs the full URL which looks like
 
 ```
-https://discordapp.com/api/webhooks/1234567890123456789/1Px6cK9-9346g0CbOYArYjr1jj6X9rvRcCpRi3s7HePN0POeCSvuF1Iagb-Wjiq78BnT
+https://discord.com/api/webhooks/1234567890123456789/1Px6cK9-9346g0CbOYArYjr1jj6X9rvRcCpRi3s7HePN0POeCSvuF1Iagb-Wjiq78BnT
 ```
+
+For security reasons, the channel only sends requests to `https://` Discord webhook URLs (`discord.com`, `discordapp.com` and their
+`ptb`/`canary` subdomains). Any other route throws an `InvalidArgumentException`, so a user supplied webhook URL can't be used to make your
+application send requests to arbitrary hosts. Query parameters such as `?thread_id=` and `?wait=true` are supported.
 
 You may now send notifications through Laravel to Discord webhooks using the `via` method.
 
@@ -58,21 +60,17 @@ class DiscordNotification extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed $notifiable The notifiable model.
-     * @return array
+     * @return array<int, string>
      */
-    public function via($notifiable)
+    public function via(object $notifiable): array
     {
         return [DiscordWebhookChannel::class];
     }
 
     /**
      * Get the Discord representation of the notification.
-     *
-     * @param  mixed $notifiable The notifiable model.
-     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
      */
-    public function toDiscord($notifiable): DiscordMessage
+    public function toDiscord(object $notifiable): DiscordMessage
     {
         return DiscordMessage::create()
             ->username('My Laravel App')
@@ -83,10 +81,34 @@ class DiscordNotification extends Notification
 }
 ```
 
+### Embeds
+
+Messages may contain one or more rich embeds:
+
+```php
+use SnoerenDevelopment\DiscordWebhook\DiscordEmbed;
+use SnoerenDevelopment\DiscordWebhook\DiscordEmbedAuthor;
+use SnoerenDevelopment\DiscordWebhook\DiscordEmbedField;
+use SnoerenDevelopment\DiscordWebhook\DiscordEmbedFooter;
+
+DiscordMessage::create()
+    ->content('A new order has been placed.')
+    ->embed(
+        DiscordEmbed::create()
+            ->title('Order #1234')
+            ->url('https://domain.com/orders/1234')
+            ->color(0x5865F2)
+            ->timestamp(now())
+            ->author(DiscordEmbedAuthor::create()->name('Shop'))
+            ->field(DiscordEmbedField::create()->name('Total')->value('€ 42,00')->inline(true))
+            ->footer(DiscordEmbedFooter::create()->text('My Laravel App'))
+    );
+```
+
 ## Testing
 
 ```bash
-$ composer test
+composer test
 ```
 
 ## Credits
