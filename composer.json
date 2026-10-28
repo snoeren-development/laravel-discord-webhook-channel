@@ -19,14 +19,14 @@
     ],
     "require": {
         "php": "^8.3",
-        "guzzlehttp/guzzle": "^7.9.2",
-        "illuminate/support": ">=10"
+        "guzzlehttp/guzzle": "^7.10",
+        "illuminate/notifications": "^12.0 || ^13.0",
+        "illuminate/support": "^12.0 || ^13.0"
     },
     "require-dev": {
-        "larastan/larastan": "^3",
-        "orchestra/testbench": "^11",
-        "phpunit/phpunit": "^12",
-        "spatie/macroable": "^2.0.0"
+        "larastan/larastan": "^3.13",
+        "orchestra/testbench": "^10.0 || ^11.0",
+        "phpunit/phpunit": "^12.5"
     },
     "autoload": {
         "psr-4": {
@@ -39,9 +39,14 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit ./tests && vendor/bin/phpstan"
+        "test": [
+            "vendor/bin/phpunit",
+            "vendor/bin/phpstan"
+        ]
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

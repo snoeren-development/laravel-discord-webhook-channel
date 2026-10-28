@@ -35,7 +35,7 @@ class DiscordEmbedProvider implements Arrayable
         return $this;
     }
 
-     /**
+    /**
      * Get the instance as an array.
      *
      * @return array<string, mixed>

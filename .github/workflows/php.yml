@@ -2,19 +2,32 @@ name: PHP Tests
 
 on:
   push:
+  pull_request:
   schedule:
     - cron: '0 0 * * *'
+
+permissions:
+  contents: read
 
 jobs:
   run:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        php-versions: [8.3, 8.4, 8.5]
-    name: PHP ${{ matrix.php-versions }}
+        php-versions: ['8.3', '8.4', '8.5']
+        laravel: ['12', '13']
+        include:
+          - laravel: '12'
+            testbench: '10'
+          - laravel: '13'
+            testbench: '11'
+    name: PHP ${{ matrix.php-versions }} - Laravel ${{ matrix.laravel }}
     steps:
     - name: Checkout
       uses: actions/checkout@v6
+      with:
+        persist-credentials: false
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -23,13 +36,19 @@ jobs:
         coverage: xdebug
 
     - name: Validate composer.json and composer.lock
-      run: composer validate
+      run: composer validate --strict
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: |
+        composer require --no-update --no-interaction "illuminate/notifications:^${{ matrix.laravel }}.0" "illuminate/support:^${{ matrix.laravel }}.0"
+        composer require --dev --no-update --no-interaction "orchestra/testbench:^${{ matrix.testbench }}.0"
+        composer update --prefer-dist --no-progress --no-interaction
+
+    - name: Audit dependencies
+      run: composer audit
 
     - name: Run test suite
-      run: vendor/bin/phpunit ./tests --coverage-text
+      run: vendor/bin/phpunit --coverage-text
 
     - name: Run PHPStan
-      run: vendor/bin/phpstan
+      run: vendor/bin/phpstan --no-progress

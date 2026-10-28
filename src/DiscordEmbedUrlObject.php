@@ -8,7 +8,7 @@ use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * "image", "thumbnail" and "video" embed structures all-in-one.
- * 
+ *
  * @implements Arrayable<string, mixed>
  */
 class DiscordEmbedUrlObject implements Arrayable

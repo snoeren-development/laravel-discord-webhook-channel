@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\Arrayable;
 /** @implements Arrayable<string, mixed> */
 class DiscordEmbedAuthor implements Arrayable
 {
-    /**  The name of the embed author. */
+    /** The name of the embed author. */
     protected string|null $name = null;
 
     /** The url of the embed author. */
@@ -21,7 +21,7 @@ class DiscordEmbedAuthor implements Arrayable
     /** The proxy icon URL of the embed author. */
     protected string|null $proxyIconUrl = null;
 
-    /**  Create a new Discord embed author instance. */
+    /** Create a new Discord embed author instance. */
     public static function create(): self
     {
         return new self;
